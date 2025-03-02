@@ -1,13 +1,14 @@
 'use client';
 
 import Link from 'next/link'
-import { Home, BookOpen, Calendar, Menu, X } from 'lucide-react'
+import { Home, BookOpen, Calendar, Menu, X, BookMarked } from 'lucide-react'
 import { useState } from 'react'
 
 const menuItems = [
   { href: '/', icon: Home, label: '홈' },
   { href: '/guidelines', icon: BookOpen, label: '가이드라인' },
   { href: '/schedule', icon: Calendar, label: '스케줄' },
+  { href: '/guestbook', icon: BookMarked, label: '방명록' },
 ]
 
 export function Navbar() {
@@ -18,8 +19,12 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 rounded-full mayopi-gradient flex items-center justify-center">
-              <span className="text-white font-bold">M</span>
+            <div className="w-8 h-8 rounded-full overflow-hidden">
+              <img 
+                src="/images/mayopi-logo.jpeg" 
+                alt="Mayopi Logo" 
+                className="w-full h-full object-cover"
+              />
             </div>
             <span className="mayopi-nav-title">Mayopi Family
             </span>

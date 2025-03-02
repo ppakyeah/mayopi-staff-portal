@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { BookOpen, Calendar, ExternalLink } from 'lucide-react'
+import { BookOpen, Calendar, ExternalLink, BookMarked } from 'lucide-react'
 
 const quickLinks = [
   {
@@ -23,7 +23,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           <Link
             href="/guidelines"
             className="mayopi-card p-8 flex flex-col items-center text-center group"
@@ -51,6 +51,21 @@ export default function Home() {
             </h2>
             <p className="text-gray-600">
               스텝들의 근무 일정을 확인하고 관리하세요.
+            </p>
+          </Link>
+
+          <Link
+            href="/guestbook"
+            className="mayopi-card p-8 flex flex-col items-center text-center group"
+          >
+            <div className="w-16 h-16 mayopi-gradient rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <BookMarked className="w-8 h-8 text-white" />
+            </div>
+            <h2 className="mayopi-subtitle">
+              방명록
+            </h2>
+            <p className="text-gray-600">
+              마요피에서의 추억과 추천하는 장소를 공유하세요.
             </p>
           </Link>
         </div>
