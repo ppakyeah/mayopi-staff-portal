@@ -200,7 +200,7 @@ export default function GuidelinesPage() {
                 <h3 className="font-medium mb-2 text-[#FF6B35]">기본 규칙</h3>
                 <ul className="list-disc list-inside text-gray-600">
                   <li>청소 마치고 나온 빨래 세탁 후 건조기로 옮기기</li>
-                  <li>건조 정도 '강'으로 꼭 변경 후 건조</li>
+                  <li>건조 정도 &apos;강&apos;으로 꼭 변경 후 건조</li>
                   <li>건조된 빨래는 다음날 청소팀이 정리</li>
                 </ul>
               </div>
@@ -292,7 +292,7 @@ export default function GuidelinesPage() {
                 <h3 className="font-medium mb-2 text-[#FF6B35]">추가 체크사항</h3>
                 <ul className="list-disc list-inside text-gray-600">
                   <li>청소한 방 외에 당일 입실하는 방도 체크</li>
-                  <li>체크 완료 후 톡방에 "입실체크 완료" 문자 보내기</li>
+                  <li>체크 완료 후 톡방에 &quot;입실체크 완료&quot; 문자 보내기</li>
                   <li>카페동 물품 재고 확인
                     <ul className="list-disc list-inside ml-4">
                       <li>물, 수건 비어있으면 8개분 정도 재고 채우기</li>

@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { collection, onSnapshot, addDoc, deleteDoc, doc, getDocs } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { format, addDays, parseISO } from 'date-fns';
-import { ko } from 'date-fns/locale';
+import koLocale from '@fullcalendar/core/locales/ko';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -37,6 +37,11 @@ interface CalendarProps {
   onScheduleChange?: () => void;
 }
 
+interface DateSelectInfo {
+  start: Date;
+  end: Date;
+}
+
 export default function Calendar({ onScheduleChange }: CalendarProps) {
   const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [isAddEventOpen, setIsAddEventOpen] = useState(false);
@@ -47,7 +52,7 @@ export default function Calendar({ onScheduleChange }: CalendarProps) {
   });
 
   // Firestore 데이터 가져오기 함수
-  const fetchSchedules = async () => {
+  const fetchSchedules = useCallback(async () => {
     try {
       const querySnapshot = await getDocs(collection(db, 'schedules'));
       const scheduleData = querySnapshot.docs.map(doc => ({
@@ -73,7 +78,7 @@ export default function Calendar({ onScheduleChange }: CalendarProps) {
     } catch (error) {
       console.error('스케줄 데이터 가져오기 실패:', error);
     }
-  };
+  }, [onScheduleChange]);
 
   useEffect(() => {
     fetchSchedules();
@@ -84,11 +89,6 @@ export default function Calendar({ onScheduleChange }: CalendarProps) {
 
     return () => unsubscribe();
   }, [onScheduleChange, fetchSchedules]);
-
-  interface DateSelectInfo {
-    start: Date;
-    end: Date;
-  }
 
   const handleDateSelect = (selectInfo: DateSelectInfo) => {
     const endDate = new Date(selectInfo.end);
@@ -257,7 +257,7 @@ export default function Calendar({ onScheduleChange }: CalendarProps) {
         <FullCalendar
           plugins={[dayGridPlugin]}
           initialView="dayGridMonth"
-          locale="ko"
+          locale={koLocale}
           events={events}
           editable={true}
           selectable={true}
