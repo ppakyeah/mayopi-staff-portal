@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { Home, BookOpen, Calendar, Menu, X, BookMarked } from 'lucide-react'
 import { useState } from 'react'
 
@@ -19,11 +20,12 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 rounded-full overflow-hidden">
-              <img 
+            <div className="w-8 h-8 rounded-full overflow-hidden relative">
+              <Image 
                 src="/images/mayopi-logo.jpeg" 
                 alt="Mayopi Logo" 
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
             </div>
             <span className="mayopi-nav-title">Mayopi Family

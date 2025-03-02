@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { collection, onSnapshot, deleteDoc, doc } from 'firebase/firestore';
+import { collection, onSnapshot, deleteDoc, doc, Timestamp } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { Button } from '@/components/ui/button';
 import { BookMarked, User2, MapPin } from 'lucide-react';
@@ -13,7 +13,7 @@ interface GuestbookEntry {
   content: string;
   recommendations?: string;
   authorName: string;
-  createdAt: any;
+  createdAt: Timestamp;
 }
 
 export default function GuestbookPage() {
