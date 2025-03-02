@@ -8,7 +8,7 @@ import koLocale from '@fullcalendar/core/locales/ko';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Plus, RefreshCw } from 'lucide-react';
+import { Plus } from 'lucide-react';
 
 interface Schedule {
   id: string;
