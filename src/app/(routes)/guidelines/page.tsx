@@ -1,4 +1,4 @@
-import { Clock, Home, Trash, CheckSquare2, Waves, ClipboardCheck, Bed, Bath, Box, Shirt } from 'lucide-react'
+import { CheckSquare2, Bed, Bath, Box, Shirt, ClipboardCheck } from 'lucide-react'
 
 export default function GuidelinesPage() {
   return (

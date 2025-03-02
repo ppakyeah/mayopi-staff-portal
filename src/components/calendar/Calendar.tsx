@@ -40,7 +40,6 @@ interface CalendarProps {
 export default function Calendar({ onScheduleChange }: CalendarProps) {
   const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [isAddEventOpen, setIsAddEventOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [newEvent, setNewEvent] = useState<NewEventForm>({
     startDate: format(new Date(), 'yyyy-MM-dd'),
     endDate: format(new Date(), 'yyyy-MM-dd'),
@@ -84,10 +83,14 @@ export default function Calendar({ onScheduleChange }: CalendarProps) {
     });
 
     return () => unsubscribe();
-  }, [onScheduleChange]);
+  }, [onScheduleChange, fetchSchedules]);
 
-  const handleDateSelect = (selectInfo: any) => {
-    setSelectedDate(selectInfo.start);
+  interface DateSelectInfo {
+    start: Date;
+    end: Date;
+  }
+
+  const handleDateSelect = (selectInfo: DateSelectInfo) => {
     const endDate = new Date(selectInfo.end);
     endDate.setDate(endDate.getDate() - 1);
 
