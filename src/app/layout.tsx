@@ -20,7 +20,7 @@ export default function RootLayout({
           <main className="pt-16">
             {children}
           </main>
-          <div className="fixed inset-0 -z-10 bg-[url('/images/mayopi-pattern.svg')] opacity-5" />
+          <div className="fixed inset-0 -z-10 bg-[url('/images/mayopi-logo.jpeg')] opacity-5" />
         </div>
       </body>
     </html>

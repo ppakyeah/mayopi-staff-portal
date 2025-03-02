@@ -176,13 +176,20 @@ export default function Calendar({ onScheduleChange }: CalendarProps) {
         </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow">
+      <div className="bg-white">
         <style jsx global>{`
           .calendar-event {
             padding: 2px 4px;
             font-weight: 600;
             border-radius: 4px;
             color: white !important;
+          }
+          .fc {
+            border: none !important;
+          }
+          .fc-col-header-cell-cushion,
+          .fc-daygrid-day-number {
+            color: #000000 !important;
           }
           .fc-event-title {
             font-size: 0.95em;
@@ -193,6 +200,11 @@ export default function Calendar({ onScheduleChange }: CalendarProps) {
             font-size: 1.25rem;
             font-weight: 600;
             color: #1a1a1a;
+          }
+          .fc-theme-standard td, 
+          .fc-theme-standard th,
+          .fc-theme-standard .fc-scrollgrid {
+            border: none !important;
           }
           .fc .fc-button {
             background-color: white !important;

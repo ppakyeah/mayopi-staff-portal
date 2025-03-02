@@ -85,7 +85,7 @@ body {
 
 @layer components {
   .mayopi-gradient {
-    @apply bg-gradient-to-br from-[#FF6B35] to-[#FFB563];
+    @apply bg-gradient-to-br from-[#FF6B35] to-[#FFB563] text-white;
   }
 
   .mayopi-card {
