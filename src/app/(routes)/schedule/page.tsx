@@ -1,0 +1,84 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { Users } from 'lucide-react'
+import Calendar from '@/components/calendar/Calendar';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '@/lib/firebase';
+import { format } from 'date-fns';
+
+interface Schedule {
+  id: string;
+  start: string;
+  end: string;
+  staffName: string;
+}
+
+export default function SchedulePage() {
+  const [todayShifts, setTodayShifts] = useState<Schedule[]>([]);
+
+  // 오늘의 근무자 데이터 가져오기
+  const fetchTodayShifts = async () => {
+    try {
+      const today = format(new Date(), 'yyyy-MM-dd');
+      const shiftsQuery = query(
+        collection(db, 'schedules'),
+        where('start', '==', today)
+      );
+      
+      const querySnapshot = await getDocs(shiftsQuery);
+      const todaySchedules = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      })) as Schedule[];
+      
+      setTodayShifts(todaySchedules);
+    } catch (error) {
+      console.error('오늘의 근무자 데이터 가져오기 실패:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTodayShifts();
+  }, []);
+
+  return (
+    <div className="container mx-auto px-4 py-8 max-w-7xl">
+      <h1 className="mayopi-title">근무 스케줄</h1>
+      <div className="space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+          <div className="mayopi-card p-6">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 mayopi-gradient rounded-lg flex items-center justify-center">
+                <Users className="w-5 h-5 text-white" />
+              </div>
+              <h2 className="mayopi-subtitle">오늘의 근무자</h2>
+            </div>
+            <div className="space-y-4">
+              {todayShifts.length > 0 ? (
+                todayShifts.map((shift) => (
+                  <div key={shift.id} className="p-3 bg-orange-50 rounded-lg text-black">
+                    <div className="mt-1 font-medium">
+                      {shift.staffName}
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="p-3 bg-orange-50 rounded-lg">
+                  <div className="text-sm text-gray-600">
+                    오늘 배정된 근무자가 없습니다.
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="mayopi-card">
+          <div className="p-6">
+            <Calendar onScheduleChange={fetchTodayShifts} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+} 
