@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, updateDoc, Timestamp } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,7 +14,7 @@ interface GuestbookEntry {
   content: string;
   recommendations?: string;
   authorName: string;
-  createdAt: any;
+  createdAt: Timestamp;
 }
 
 export default function GuestbookEditPage({ params }: { params: { id: string } }) {
