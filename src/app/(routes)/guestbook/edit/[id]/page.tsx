@@ -17,7 +17,14 @@ interface GuestbookEntry {
   createdAt: Timestamp;
 }
 
-export default function GuestbookEditPage({ params }: { params: { id: string } }) {
+interface PageProps {
+  params: {
+    id: string;
+  };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export default function GuestbookEditPage({ params }: PageProps) {
   const router = useRouter();
   const [entry, setEntry] = useState<GuestbookEntry | null>(null);
   const [isLoading, setIsLoading] = useState(true);
