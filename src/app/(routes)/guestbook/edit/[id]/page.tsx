@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import { doc, getDoc, updateDoc, Timestamp } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { Button } from '@/components/ui/button';
@@ -17,22 +17,16 @@ interface GuestbookEntry {
   createdAt: Timestamp;
 }
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
-export default function GuestbookEditPage({ params }: PageProps) {
+export default function GuestbookEditPage() {
   const router = useRouter();
+  const params = useParams();
   const [entry, setEntry] = useState<GuestbookEntry | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchEntry = async () => {
       try {
-        const docRef = doc(db, 'guestbook', params.id);
+        const docRef = doc(db, 'guestbook', params.id as string);
         const docSnap = await getDoc(docRef);
         
         if (docSnap.exists()) {
@@ -51,7 +45,9 @@ export default function GuestbookEditPage({ params }: PageProps) {
       }
     };
 
-    fetchEntry();
+    if (params.id) {
+      fetchEntry();
+    }
   }, [params.id, router]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
