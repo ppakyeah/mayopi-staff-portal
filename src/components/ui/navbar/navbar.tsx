@@ -2,12 +2,13 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Home, BookOpen, Calendar, Menu, X, BookMarked } from 'lucide-react'
+import { Home, BookOpen, Calendar, Menu, X, BookMarked, Users2 } from 'lucide-react'
 import { useState } from 'react'
 
 const menuItems = [
   { href: '/', icon: Home, label: '홈' },
-  { href: '/guidelines', icon: BookOpen, label: '가이드라인' },
+  { href: '/guidelines', icon: BookOpen, label: '청소 가이드라인' },
+  { href: '/staff-guidelines', icon: Users2, label: '생활 가이드라인' },
   { href: '/schedule', icon: Calendar, label: '스케줄' },
   { href: '/guestbook', icon: BookMarked, label: '방명록' },
 ]

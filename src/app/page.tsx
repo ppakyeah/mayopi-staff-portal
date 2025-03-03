@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { BookOpen, Calendar, ExternalLink, BookMarked } from 'lucide-react'
+import { BookOpen, Calendar, ExternalLink, BookMarked, Users2 } from 'lucide-react'
 
 const quickLinks = [
   {
@@ -33,7 +33,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
           <Link
             href="/guidelines"
             className="mayopi-card p-8 flex flex-col items-center text-center group"
@@ -46,6 +46,21 @@ export default function Home() {
             </h2>
             <p className="text-gray-600">
               마요피갤러리 객실 청소 가이드라인을 확인하세요.
+            </p>
+          </Link>
+
+          <Link
+            href="/staff-guidelines"
+            className="mayopi-card p-8 flex flex-col items-center text-center group"
+          >
+            <div className="w-16 h-16 mayopi-gradient rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <Users2 className="w-8 h-8 text-white" />
+            </div>
+            <h2 className="mayopi-subtitle">
+              생활 가이드라인
+            </h2>
+            <p className="text-gray-600">
+              마요피갤러리 스텝들의 단체 생활 규칙을 확인하세요.
             </p>
           </Link>
 
