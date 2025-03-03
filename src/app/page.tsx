@@ -114,6 +114,17 @@ export default function Home() {
             ))}
           </div>
         </div>
+
+        <footer className="mt-16 text-center text-sm text-gray-500">
+          <p>© {new Date().getFullYear()} Mayopi Gallery. All rights reserved.</p>
+          <p className="mt-2">Developed with ❤️ by Yejin</p>
+          <a 
+            href="mailto:dpwls159966@gmail.com" 
+            className="mt-1 inline-block hover:text-orange-500 transition-colors"
+          >
+            dpwls159966@gmail.com
+          </a>
+        </footer>
       </div>
     </div>
   )

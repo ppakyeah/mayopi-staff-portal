@@ -135,10 +135,7 @@ export default function StaffGuidelinesPage() {
                 <h3 className="font-medium mb-2 text-[#FF6B35]">마요피갤러리 카페</h3>
                 <ul className="list-disc list-inside text-gray-600">
                   <li>카페 이용 원하는 경우 혜인 언니께 문의</li>
-                  <li>객실 손님을 위해 가장자리에서 작업</li>
-                  <li>2명 이상일 경우 한쪽에 모여 앉기</li>
                   <li>손님이 많을 때는 자리 양보하기</li>
-                  <li>이용 후 냉난방기 끄기 (겨울 23도/여름 26도)</li>
                 </ul>
               </div>
             </div>
