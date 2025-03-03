@@ -6,6 +6,16 @@ const quickLinks = [
     title: '입퇴실 스케줄',
     href: 'https://docs.google.com/spreadsheets/d/1KWy8IQF5dLa9SpUW5Y6uvTSq8a6bVssshZJxmbaeGLI/htmlview#',
     description: '마요피갤러리 입퇴실 스케줄 스프레드 시트'
+  },
+  {
+    title: '홈페이지',
+    href: 'https://mayopigallery.modoo.at/',
+    description: '마요피갤러리 소개 페이지'
+  },
+  {
+    title: '블로그',
+    href: 'https://blog.naver.com/mayopi',
+    description: '마요피갤러리 네이버 블로그'
   }
 ];
 
@@ -19,7 +29,7 @@ export default function Home() {
             Mayopi Family
           </h1>
           <p className="text-xl text-gray-600">
-            마요피갤러리 게스트하우스 스텝을 위한 정보 공유 플랫폼입니다.
+            마요피갤러리 스텝 식구들을 위한 정보 공유 플랫폼입니다.
           </p>
         </div>
 

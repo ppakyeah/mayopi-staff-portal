@@ -3,8 +3,8 @@ import "./globals.css";
 import { Navbar } from "@/components/ui/navbar/navbar";
 
 export const metadata: Metadata = {
-  title: "마요피 스텝 포털",
-  description: "마요피갤러리 게스트하우스 스텝을 위한 정보 공유 플랫폼",
+  title: "Mayopi Family",
+  description: "마요피갤러리 스텝 식구들을 위한 정보 공유 플랫폼",
 };
 
 export default function RootLayout({

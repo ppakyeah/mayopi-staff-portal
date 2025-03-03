@@ -43,22 +43,25 @@ export default function SchedulePage() {
   }, []);
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-7xl">
-      <h1 className="mayopi-title">근무 스케줄</h1>
-      <div className="space-y-8">
-        <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
-          <div className="mayopi-card p-6">
+    <div className="max-w-[1024px] mx-auto py-8 px-4">
+      <div className="flex items-center justify-between mb-8">
+        <h1 className="text-3xl font-bold mayopi-title">근무 스케줄</h1>
+      </div>
+
+      <div className="space-y-6">
+        <div className="bg-white rounded-lg shadow-md overflow-hidden">
+          <div className="p-6">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 mayopi-gradient rounded-lg flex items-center justify-center">
                 <Users className="w-5 h-5 text-white" />
               </div>
-              <h2 className="mayopi-subtitle">오늘의 근무자</h2>
+              <h2 className="mayopi-card-title">오늘의 근무자</h2>
             </div>
             <div className="space-y-4">
               {todayShifts.length > 0 ? (
                 todayShifts.map((shift) => (
-                  <div key={shift.id} className="p-3 bg-orange-50 rounded-lg text-black">
-                    <div className="mt-1 font-medium">
+                  <div key={shift.id} className="p-3 bg-orange-50 rounded-lg">
+                    <div className="font-medium text-black">
                       {shift.staffName}
                     </div>
                   </div>
@@ -73,7 +76,8 @@ export default function SchedulePage() {
             </div>
           </div>
         </div>
-        <div className="mayopi-card">
+
+        <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="p-6">
             <Calendar onScheduleChange={fetchTodayShifts} />
           </div>

@@ -93,10 +93,14 @@ body {
   }
 
   .mayopi-title {
-    @apply text-2xl font-bold text-gray-900 mb-4;
+    @apply text-2xl font-bold mb-4;
     background: linear-gradient(to right, #FF6B35, #FFB563);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  .mayopi-card-title {
+    @apply text-xl font-bold text-[#FF6B35] leading-none;
   }
 
   .mayopi-subtitle {

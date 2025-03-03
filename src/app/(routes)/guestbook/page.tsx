@@ -4,9 +4,8 @@ import { useEffect, useState } from 'react';
 import { collection, onSnapshot, deleteDoc, doc, Timestamp } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { Button } from '@/components/ui/button';
-import { BookMarked, User2, MapPin } from 'lucide-react';
+import { BookMarked, User2, MapPin, Trash2 } from 'lucide-react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 interface GuestbookEntry {
   id: string;
@@ -19,7 +18,6 @@ interface GuestbookEntry {
 export default function GuestbookPage() {
   const [entries, setEntries] = useState<GuestbookEntry[]>([]);
   const [expandedEntry, setExpandedEntry] = useState<string | null>(null);
-  const router = useRouter();
 
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, 'guestbook'), (snapshot) => {
@@ -35,23 +33,13 @@ export default function GuestbookPage() {
     return () => unsubscribe();
   }, []);
 
-  const handleDelete = async (id: string) => {
-    if (window.confirm('정말로 이 방명록을 삭제하시겠습니까?')) {
-      try {
-        await deleteDoc(doc(db, 'guestbook', id));
-      } catch (error) {
-        console.error('Error deleting entry:', error);
-      }
-    }
-  };
-
   const toggleExpand = (id: string) => {
     setExpandedEntry(expandedEntry === id ? null : id);
   };
 
   if (entries.length === 0) {
     return (
-      <div className="max-w-[1024px] mx-auto py-8">
+      <div className="max-w-[1024px] mx-auto py-8 px-4">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold mayopi-title">방명록</h1>
           <Link href="/guestbook/write">
@@ -76,7 +64,7 @@ export default function GuestbookPage() {
   }
 
   return (
-    <div className="max-w-[1024px] mx-auto py-8">
+    <div className="max-w-[1024px] mx-auto py-8 px-4">
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-3xl font-bold mayopi-title">방명록</h1>
         <Link href="/guestbook/write">
@@ -89,7 +77,7 @@ export default function GuestbookPage() {
           {entries.map((entry) => (
             <div 
               key={entry.id} 
-              className="p-6 hover:bg-orange-50 transition-colors cursor-pointer"
+              className="p-6 hover:bg-orange-50 transition-colors cursor-pointer relative group"
               onClick={() => toggleExpand(entry.id)}
             >
               <div className="flex items-start gap-4">
@@ -102,6 +90,17 @@ export default function GuestbookPage() {
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="font-bold text-lg truncate text-black">{entry.authorName}</h3>
                     <div className="flex items-center gap-4">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (window.confirm('정말로 이 방명록을 삭제하시겠습니까?')) {
+                            deleteDoc(doc(db, 'guestbook', entry.id));
+                          }
+                        }}
+                        className="opacity-0 group-hover:opacity-100 transition-opacity p-1 hover:bg-red-50 rounded-full"
+                      >
+                        <Trash2 className="w-4 h-4 text-red-500" />
+                      </button>
                       <span className="text-sm font-medium text-black">
                         {entry.createdAt?.toDate().toLocaleDateString('ko-KR', {
                           year: 'numeric',
@@ -109,30 +108,6 @@ export default function GuestbookPage() {
                           day: 'numeric'
                         })}
                       </span>
-                      <div className="flex gap-2">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            router.push(`/guestbook/edit/${entry.id}`);
-                          }}
-                          className="text-black hover:text-black"
-                        >
-                          수정
-                        </Button>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleDelete(entry.id);
-                          }}
-                          className="text-black hover:text-black"
-                        >
-                          삭제
-                        </Button>
-                      </div>
                     </div>
                   </div>
                   <div className={`${expandedEntry === entry.id ? '' : 'line-clamp-3'}`}>

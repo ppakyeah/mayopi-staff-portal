@@ -3,8 +3,10 @@ import { CheckSquare2, Bed, Bath, Box, Shirt, ClipboardCheck } from 'lucide-reac
 export default function GuidelinesPage() {
   return (
     <div className="max-w-[1024px] mx-auto py-8">
-      <h1 className="mayopi-title">객실 청소 가이드라인</h1>
-      
+      <div className="flex items-center justify-between mb-8">
+        <h1 className="text-3xl font-bold mayopi-title">객실 청소 가이드라인</h1>
+      </div>
+
       {/* 네비게이션 버튼 */}
       <div className="mb-8 flex flex-wrap gap-2">
         <a href="#preparation" className="px-4 py-2 bg-orange-50 hover:bg-orange-100 text-[#FF6B35] rounded-lg transition-colors">
@@ -27,14 +29,14 @@ export default function GuidelinesPage() {
         </a>
       </div>
 
-      <div>
-        <div className="space-y-8">
-          <div id="preparation" className="mayopi-card p-6 scroll-mt-4">
+      <div className="space-y-6">
+        <div id="preparation" className="bg-white rounded-lg shadow-md overflow-hidden">
+          <div className="p-6">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 mayopi-gradient rounded-lg flex items-center justify-center">
                 <CheckSquare2 className="w-5 h-5 text-white" />
               </div>
-              <h2 className="mayopi-subtitle">청소 준비물</h2>
+              <h2 className="mayopi-card-title">청소 준비물</h2>
             </div>
             <div className="space-y-4">
               <div className="p-4 bg-orange-50 rounded-lg">
@@ -110,13 +112,15 @@ export default function GuidelinesPage() {
               </div>
             </div>
           </div>
+        </div>
 
-          <div id="before-cleaning" className="mayopi-card p-6 scroll-mt-4">
+        <div id="before-cleaning" className="bg-white rounded-lg shadow-md overflow-hidden">
+          <div className="p-6">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 mayopi-gradient rounded-lg flex items-center justify-center">
                 <Bed className="w-5 h-5 text-white" />
               </div>
-              <h2 className="mayopi-subtitle">청소 시작 전 준비</h2>
+              <h2 className="mayopi-card-title">청소 시작 전 준비</h2>
             </div>
             <div className="space-y-4">
               <div className="p-4 bg-orange-50 rounded-lg">
@@ -129,13 +133,15 @@ export default function GuidelinesPage() {
               </div>
             </div>
           </div>
+        </div>
 
-          <div id="bathroom" className="mayopi-card p-6 scroll-mt-4">
+        <div id="bathroom" className="bg-white rounded-lg shadow-md overflow-hidden">
+          <div className="p-6">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 mayopi-gradient rounded-lg flex items-center justify-center">
                 <Bath className="w-5 h-5 text-white" />
               </div>
-              <h2 className="mayopi-subtitle">화장실 청소</h2>
+              <h2 className="mayopi-card-title">화장실 청소</h2>
             </div>
             <div className="space-y-4">
               <div className="p-4 bg-orange-50 rounded-lg">
@@ -157,13 +163,15 @@ export default function GuidelinesPage() {
               </div>
             </div>
           </div>
+        </div>
 
-          <div id="room" className="mayopi-card p-6 scroll-mt-4">
+        <div id="room" className="bg-white rounded-lg shadow-md overflow-hidden">
+          <div className="p-6">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 mayopi-gradient rounded-lg flex items-center justify-center">
                 <Box className="w-5 h-5 text-white" />
               </div>
-              <h2 className="mayopi-subtitle">객실 청소</h2>
+              <h2 className="mayopi-card-title">객실 청소</h2>
             </div>
             <div className="space-y-4">
               <div className="p-4 bg-orange-50 rounded-lg">
@@ -187,13 +195,15 @@ export default function GuidelinesPage() {
               </div>
             </div>
           </div>
+        </div>
 
-          <div id="laundry" className="mayopi-card p-6 scroll-mt-4">
+        <div id="laundry" className="bg-white rounded-lg shadow-md overflow-hidden">
+          <div className="p-6">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 mayopi-gradient rounded-lg flex items-center justify-center">
                 <Shirt className="w-5 h-5 text-white" />
               </div>
-              <h2 className="mayopi-subtitle">세탁 및 건조 가이드</h2>
+              <h2 className="mayopi-card-title">세탁 및 건조 가이드</h2>
             </div>
             <div className="space-y-4">
               <div className="p-4 bg-orange-50 rounded-lg">
@@ -238,13 +248,15 @@ export default function GuidelinesPage() {
               </div>
             </div>
           </div>
+        </div>
 
-          <div id="finishing" className="mayopi-card p-6 scroll-mt-4">
+        <div id="finishing" className="bg-white rounded-lg shadow-md overflow-hidden">
+          <div className="p-6">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 mayopi-gradient rounded-lg flex items-center justify-center">
                 <ClipboardCheck className="w-5 h-5 text-white" />
               </div>
-              <h2 className="mayopi-subtitle">마무리 작업</h2>
+              <h2 className="mayopi-card-title">마무리 작업</h2>
             </div>
             <div className="space-y-4">
               <div className="p-4 bg-orange-50 rounded-lg">

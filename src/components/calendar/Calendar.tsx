@@ -160,7 +160,7 @@ export default function Calendar({ onScheduleChange }: CalendarProps) {
 
   return (
     <>
-      <div className="border-b p-6">
+      <div className="pb-6 pt-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-3">
           </div>
@@ -183,6 +183,8 @@ export default function Calendar({ onScheduleChange }: CalendarProps) {
             font-weight: 600;
             border-radius: 4px;
             color: white !important;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
           }
           .fc {
             border: none !important;
@@ -204,7 +206,7 @@ export default function Calendar({ onScheduleChange }: CalendarProps) {
           .fc-theme-standard td, 
           .fc-theme-standard th,
           .fc-theme-standard .fc-scrollgrid {
-            border: none !important;
+            border: 1px solid #e5e7eb !important;
           }
           .fc .fc-button {
             background-color: white !important;
