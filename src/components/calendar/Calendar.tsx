@@ -161,13 +161,13 @@ export default function Calendar({ onScheduleChange }: CalendarProps) {
   return (
     <>
       <div className="pb-6 pt-4">
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
           <div className="flex items-center gap-3">
           </div>
-          <div className="flex gap-3">
+          <div className="flex gap-3 w-full sm:w-auto">
             <button 
               onClick={() => setIsAddEventOpen(true)}
-              className="px-4 py-2 mayopi-gradient text-white rounded-lg hover:opacity-90 transition-opacity flex items-center gap-2"
+              className="w-full sm:w-auto px-4 py-2 mayopi-gradient text-white rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
             >
               <Plus size={18} />
               <span>일정 등록</span>
@@ -190,7 +190,8 @@ export default function Calendar({ onScheduleChange }: CalendarProps) {
             border: none !important;
           }
           .fc-col-header-cell-cushion,
-          .fc-daygrid-day-number {
+          .fc-daygrid-day-number,
+          .fc-daygrid-more-link {
             color: #000000 !important;
           }
           .fc-event-title {
@@ -203,6 +204,58 @@ export default function Calendar({ onScheduleChange }: CalendarProps) {
             font-weight: 600;
             color: #1a1a1a;
           }
+          
+          /* 모바일 최적화 스타일 */
+          @media (max-width: 768px) {
+            .fc {
+              font-size: 0.9em;
+            }
+            .fc .fc-toolbar {
+              flex-direction: column;
+              gap: 1rem;
+            }
+            .fc .fc-toolbar-title {
+              font-size: 1.1rem;
+              margin: 0.5rem 0;
+            }
+            .fc .fc-button {
+              padding: 0.4rem 0.8rem !important;
+              font-size: 0.9rem !important;
+            }
+            .fc .fc-toolbar-chunk {
+              display: flex;
+              gap: 0.5rem;
+              flex-wrap: wrap;
+              justify-content: center;
+            }
+            .fc-event-title {
+              font-size: 0.85em;
+              line-height: 1.2;
+            }
+            .fc .fc-daygrid-day-number {
+              padding: 4px !important;
+            }
+            .fc .fc-daygrid-day-top {
+              flex-direction: row;
+              justify-content: center;
+            }
+            .calendar-event {
+              padding: 1px 3px;
+              margin-bottom: 1px;
+            }
+            .fc .fc-daygrid-more-link {
+              font-size: 0.85em;
+              margin-top: 1px;
+              padding: 1px 2px;
+              background: #f3f4f6;
+              border-radius: 4px;
+            }
+            .fc .fc-daygrid-day-frame {
+              min-height: 65px !important;
+            }
+          }
+
+          /* 기존 스타일 유지 */
           .fc-theme-standard td, 
           .fc-theme-standard th,
           .fc-theme-standard .fc-scrollgrid {
@@ -267,6 +320,21 @@ export default function Calendar({ onScheduleChange }: CalendarProps) {
           :global(.dialog-description) {
             color: #000000 !important;
           }
+          
+          /* 리스트 뷰 스타일 */
+          .fc-list-event {
+            cursor: pointer;
+            transition: background-color 0.2s;
+          }
+          .fc-list-event:hover {
+            background-color: #FFF5F1 !important;
+          }
+          .fc-list-event-title {
+            font-weight: 500;
+          }
+          .fc-list-day-cushion {
+            background-color: #f9fafb !important;
+          }
         `}</style>
         <FullCalendar
           plugins={[dayGridPlugin]}
@@ -287,12 +355,12 @@ export default function Calendar({ onScheduleChange }: CalendarProps) {
           headerToolbar={{
             left: 'prev,next today',
             center: 'title',
-            right: 'dayGridMonth'
+            right: ''
           }}
           eventContent={(eventInfo) => {
             return (
               <>
-                <div className="font-semibold">{eventInfo.event.title}</div>
+                <div className="font-semibold text-sm sm:text-base">{eventInfo.event.title}</div>
               </>
             );
           }}
@@ -300,7 +368,7 @@ export default function Calendar({ onScheduleChange }: CalendarProps) {
       </div>
 
       <Dialog open={isAddEventOpen} onOpenChange={setIsAddEventOpen}>
-        <DialogContent className="dialog-content">
+        <DialogContent className="dialog-content w-[95vw] max-w-md mx-auto">
           <DialogHeader className="dialog-header">
             <DialogTitle className="dialog-title">새 근무 일정 등록</DialogTitle>
             <DialogDescription className="dialog-description"></DialogDescription>
