@@ -125,8 +125,7 @@ export default function GuidelinesPage() {
             <div className="space-y-4">
               <div className="p-4 bg-orange-50 rounded-lg">
                 <ul className="list-disc list-inside text-gray-600">
-                  <li>창문 닫기</li>
-                  <li>전체 소등</li>
+                  <li>창문 열기</li>
                   <li>보일러 끄기</li>
                   <li>제습기 켜기</li>
                 </ul>
