@@ -3,12 +3,12 @@ import { CheckSquare2, Bed, Bath, Box, Shirt, ClipboardCheck } from 'lucide-reac
 export default function GuidelinesPage() {
   return (
     <div className="max-w-[1024px] mx-auto py-8">
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-8 px-4 sm:px-0">
         <h1 className="text-3xl font-bold mayopi-title">객실 청소 가이드라인</h1>
       </div>
 
       {/* 네비게이션 버튼 */}
-      <div className="mb-8 flex flex-wrap gap-2">
+      <div className="mb-8 flex flex-wrap gap-2 px-4 sm:px-0">
         <a href="#preparation" className="px-4 py-2 bg-orange-50 hover:bg-orange-100 text-[#FF6B35] rounded-lg transition-colors">
           청소 준비물
         </a>
@@ -29,7 +29,7 @@ export default function GuidelinesPage() {
         </a>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-6 px-4 sm:px-0">
         <div id="preparation" className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="p-6">
             <div className="flex items-center gap-3 mb-6">
